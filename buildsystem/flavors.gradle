@@ -1,0 +1,35 @@
+ext.flavorConfig = {
+    flavorDimensions "env"
+    productFlavors {
+        rec {
+            dimension "env"
+            resValue "string", "app_name", "News App - rec"
+            ext{
+                apiUrl = "\"https://newsapi.org/v2/\""
+            }
+        }
+
+        prod {
+            dimension "env"
+            resValue "string", "app_name", "News App"
+            ext{
+                apiUrl = "\"https://newsapi.org/v2/\""
+            }
+        }
+    }
+
+    productFlavors.all { productFlavor ->
+        def flavorName = productFlavor.name
+
+        buildConfigField("long","VERSION_CODE", "${defaultConfig.versionCode}")
+        buildConfigField("String","VERSION_NAME", "\"${defaultConfig.versionName}\"")
+        buildConfigField("String","VERSION", "\"1\"")
+        buildConfigField("String","DEFAULT_API_URL", productFlavor.apiUrl)
+
+        def apiKeysProps = new Properties()
+        file("${rootProject.projectDir}/buildsystem/$flavorName/apikeys.properties").withInputStream{
+            apiKeysProps.load(it)
+        }
+        buildConfigField("String","API_KEY", "\"${apiKeysProps.getProperty("api_key")}\"")
+    }
+}

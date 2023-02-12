@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/image_container"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/article_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            tools:src="@tools:sample/avatars" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_centerInParent="true"
+            tools:visibility="visible" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/article_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:padding="10dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toStartOf="@id/ic_open"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_container"
+        tools:text="Article title" />
+
+    <ImageView
+        android:id="@+id/ic_open"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/ic_down"
+        app:layout_constraintBottom_toBottomOf="@id/article_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/article_name"
+        app:layout_constraintTop_toTopOf="@id/article_name"
+        tools:src="@drawable/ic_up" />
+
+    <TextView
+        android:id="@+id/description_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginBottom="5dp"
+        android:gravity="center"
+        android:textColor="@color/color_primary_variant"
+        android:textStyle="italic"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/article_name"
+        tools:text="Aricle description"
+        tools:visibility="visible" />
+
+    <fr.systemathicdev.commons.views.HorizontalDivider
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@id/description_text" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

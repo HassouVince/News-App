@@ -1,0 +1,21 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+apply from: "${rootProject.projectDir}/buildsystem/flavors.gradle"
+apply from: "${rootProject.projectDir}/buildsystem/android_commons.gradle"
+
+android{
+    with flavorConfig
+}
+
+dependencies {
+
+    implementation "androidx.core:core-ktx:$ktx_core_version"
+    testImplementation "junit:junit:$junit_version"
+    testImplementation "androidx.test.espresso:espresso-core:$espresso_version"
+    testImplementation "androidx.test.ext:junit:$android_junit_version"
+
+    implementation project(':commons')
+}

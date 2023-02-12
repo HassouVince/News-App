@@ -1,0 +1,6 @@
+<resources>
+    <array name="sort">
+        <item>Par pays (FR)</item>
+        <item>Par language (FR)</item>
+    </array>
+</resources>
